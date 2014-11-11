@@ -3,8 +3,10 @@ html(lang="en")
   head
     title= pageTitle
   body
+    small.
+      click to get new data from api, the page will reload
     button(id='refresh_history_button' href='/' type='button').
-      refresh
+      refresh 'random'
 
     div
       block main
@@ -16,7 +18,7 @@ html(lang="en")
 
       $('#refresh_history_button').click(function(){
         $.get('/refresh_history', function(response){
-          console.log(response)
+          location.reload();
         });
       });
 

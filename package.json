@@ -4,7 +4,8 @@
   "description": "'Playing with node, express and Slack API'",
   "scripts": {
     "test": "mocha test/**/*",
-    "web": "node index.js"
+    "web": "node index.js",
+    "seed": "node config/seed.js"
   },
   "devDependencies": {
     "chai": "^1.9.2",

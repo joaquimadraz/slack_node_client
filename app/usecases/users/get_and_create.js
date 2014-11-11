@@ -9,7 +9,7 @@ function getAndCreate(usecaseFinished) {
   slackCli.users.list({}, success);
 
   function success(error, response, body){
-    var persisted = 0;
+    var persisted = [];
 
     // each user, try to find,
     // if not, persist new user
@@ -22,8 +22,6 @@ function getAndCreate(usecaseFinished) {
       User.findOne({ userId: userJson.id }, checkResult);
 
       function checkResult(err, user){
-        persisted++;
-
         if(user == null){
           var user = new User({
             userId: userJson.id,
@@ -36,8 +34,10 @@ function getAndCreate(usecaseFinished) {
         }
 
         function callUsecaseFinished(){
-          if(persisted == body.members.length){
-            usecaseFinished();
+          persisted.push(user);
+
+          if(persisted.length == body.members.length){
+            usecaseFinished(persisted);
             return;
           }
         }

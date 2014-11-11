@@ -30,4 +30,6 @@ describe('GetAndCreate Usecase', function(){
     }
   });
 
+  xit('should not duplicate users if called 2 times');
+
 });

@@ -38,13 +38,4 @@ app.get('/refresh_history', function(req, res){
 
 });
 
-app.get('/refresh_users', function(req, res){
-
-  core.users.getAndCreate({},
-    function(err){
-      res.status(err ? 503 : 200).end();
-    });
-
-});
-
 app.listen(3000);

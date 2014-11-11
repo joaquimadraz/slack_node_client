@@ -8,5 +8,6 @@ pids
 *.seed
 
 node_modules
+npm-debug.log
 
 config/slack_config_dev.js

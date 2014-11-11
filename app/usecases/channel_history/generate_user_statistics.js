@@ -18,10 +18,11 @@ function generateUserStatistics(context, usecaseFinished) {
   ChannelHistory.aggregate(aggregation).exec(afterExec);
 
   function afterExec(err, result){
-
     if(err) usecaseFinished(true, err);
 
     var serialized = [];
+
+    if(result.length == 0) usecaseFinished(false, []);
 
     result.forEach(serializeResult);
 
