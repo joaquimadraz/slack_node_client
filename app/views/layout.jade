@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+  head
+    title= pageTitle
+  body
+    button(id='refresh_history_button' href='/' type='button').
+      refresh
+
+    div
+      block main
+
+  script(type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+  //- script(type='text/javascript' src='/home.js')
+  script.
+    $(function(){
+
+      $('#refresh_history_button').click(function(){
+        $.get('/refresh_history', function(response){
+          console.log(response)
+        });
+      });
+
+    });

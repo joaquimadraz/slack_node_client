@@ -1,0 +1,12 @@
+extends layout
+
+block main
+  br
+  br
+  div
+    table
+      tbody
+        each user in usersStatistics
+          tr
+            td= user.username
+            td= user.count
