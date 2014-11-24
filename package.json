@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "chai": "^1.9.2",
+    "hock": "^1.0.0",
     "mocha": "^2.0.1",
     "nodemon": "^1.2.1"
   },

@@ -14,16 +14,18 @@ function setup(cb) {
 
 function cleanUp(database, cb){
   var collections = mongoose.connection.collections;
-  var todo = collections.length;
+  var todo = Object.keys(collections).length;
 
-  if (!todo) return cb();
+  if (todo == 0) return cb();
 
-  collections.forEach(function(collection) {
-    if (collection.collectionName.match(/^system\./))
+  for (var key in collections) {
+    var collection = collections[key];
+
+    if (collection.name.match(/^system\./))
       return --todo;
 
     collection.remove({ },{ safe: true }, function() {
       if (--todo === 0) cb();
     });
-  });
+  }
 }

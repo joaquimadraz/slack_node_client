@@ -7,9 +7,6 @@ function SlackCli() {
   var _apiBaseURL = 'https://slack.com/api';
   var _appToken   = config.slackAppToken;
 
-  this.apiBaseURL = _apiBaseURL;
-  this.appToken   = _appToken;
-
   this.users = {
     list: function(params, onResponse){
       _requestResource('users.list', params, onResponse);
@@ -29,6 +26,10 @@ function SlackCli() {
     history: function(params, onResponse){
       _requestResource('channels.history', params, onResponse);
     }
+  }
+
+  this.setApiBaseURL = function(newBaseUrl){
+    _apiBaseURL = newBaseUrl;
   }
 
   function _requestResource(name, params, onResponse){
