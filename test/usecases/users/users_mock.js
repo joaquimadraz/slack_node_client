@@ -4,7 +4,7 @@ var http = require('http');
 
 var mock = hock.createHock();
     mock
-      .get('/api/users.list?token=')
+      .get('/api/users.list')
       .many()
       .reply(200,
         {

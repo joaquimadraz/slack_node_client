@@ -15,6 +15,7 @@ describe('GetAndCreate Usecase', function(){
       core = _core
 
       SlackCli.setApiBaseURL('http://localhost:3400/api');
+      SlackCli.noAppToken();
       UserMockServer.listen(3400, done);
     });
   });

@@ -7,6 +7,8 @@ function SlackCli() {
   var _apiBaseURL = 'https://slack.com/api';
   var _appToken   = config.slackAppToken;
 
+  this.appToken = _appToken;
+
   this.users = {
     list: function(params, onResponse){
       _requestResource('users.list', params, onResponse);
@@ -32,10 +34,16 @@ function SlackCli() {
     _apiBaseURL = newBaseUrl;
   }
 
+  this.noAppToken = function(){
+    _appToken = null;
+  }
+
   function _requestResource(name, params, onResponse){
     // complete params
     params = params || {};
-    params.token = _appToken;
+
+    if(_appToken != undefined)
+      params.token = _appToken;
 
     // if onResponse is not a function, console.log body
     if(!(onResponse instanceof Function)){
